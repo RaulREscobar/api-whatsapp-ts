@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { LeadCreate } from "../../application/lead.create";
 
 class LeadCtrl {
-  constructor(private readonly leadCreator: LeadCreate) {}
+  constructor(private readonly leadCreator: LeadCreate) { }
 
   public sendCtrl = async ({ body }: Request, res: Response) => {
     const { message, phone } = body;
@@ -10,8 +10,8 @@ class LeadCtrl {
     res.send(response);
   };
 
-  public viewHome =  ( req : Request, res: Response) => {
-      res.send("Hola, esta es una api y esta funcionando")
+  public viewHome = (req: Request, res: Response) => {
+    res.send("Hola, esta es una api y esta funcionando")
   }
 }
 

@@ -2,6 +2,7 @@ import { Client, LocalAuth } from "whatsapp-web.js";
 import { image as imageQr } from "qr-image";
 import LeadExternal from "../../domain/lead-external.repository";
 
+const qrcode = require('qrcode-terminal');
 /**
  * Extendemos los super poderes de whatsapp-web
  */
@@ -22,6 +23,13 @@ class WsTransporter extends Client implements LeadExternal {
 
     console.log("Iniciando....");
 
+    this.on("qr", (qr) => {
+      console.log('escanea el QR')
+      qrcode.generate(qr, {small: true})
+      /* console.log("Escanea el codigo QR que esta en la carepta tmp");
+      this.generateImage(qr); */
+    });
+
     this.initialize();
 
     this.on("ready", () => {
@@ -34,10 +42,7 @@ class WsTransporter extends Client implements LeadExternal {
       console.log("LOGIN_FAIL");
     });
 
-    this.on("qr", (qr) => {
-      console.log("Escanea el codigo QR que esta en la carepta tmp");
-      this.generateImage(qr);
-    });
+    
   }
 
   /**
