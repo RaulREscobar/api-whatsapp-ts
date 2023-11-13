@@ -9,6 +9,10 @@ class LeadCtrl {
     const response = await this.leadCreator.sendMessageAndSave({ message, phone })
     res.send(response);
   };
+
+  public viewHome =  ( req : Request, res: Response) => {
+      res.send("Hola, esta es una api y esta funcionando")
+  }
 }
 
 export default LeadCtrl;
