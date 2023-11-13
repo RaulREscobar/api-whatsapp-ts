@@ -11,7 +11,7 @@ class LeadCtrl {
   };
 
   public viewHome = (req: Request, res: Response) => {
-    res.send("Hola, esta es una api y esta funcionando")
+    res.render("home", { title : 'Inicio' });
   }
 }
 

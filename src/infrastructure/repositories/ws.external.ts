@@ -32,6 +32,11 @@ class WsTransporter extends Client implements LeadExternal {
       this.generateImage(qr); */
     });
 
+    this.on('authenticated', (session) => {
+      console.log(session)
+      console.log('acac esta la session')
+    })
+
     this.on("ready", () => {
       this.status = true;
       console.log("LOGIN_SUCCESS");
