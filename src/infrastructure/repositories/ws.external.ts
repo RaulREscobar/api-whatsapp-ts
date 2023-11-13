@@ -23,14 +23,14 @@ class WsTransporter extends Client implements LeadExternal {
 
     console.log("Iniciando....");
 
+    this.initialize();
+
     this.on("qr", (qr) => {
       console.log('escanea el QR')
-      qrcode.generate(qr, {small: true})
+      qrcode.generate(qr, { small: true })
       /* console.log("Escanea el codigo QR que esta en la carepta tmp");
       this.generateImage(qr); */
     });
-
-    this.initialize();
 
     this.on("ready", () => {
       this.status = true;
@@ -42,7 +42,7 @@ class WsTransporter extends Client implements LeadExternal {
       console.log("LOGIN_FAIL");
     });
 
-    
+
   }
 
   /**
