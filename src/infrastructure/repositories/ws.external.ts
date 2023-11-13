@@ -26,15 +26,15 @@ class WsTransporter extends Client implements LeadExternal {
     this.initialize();
 
     this.on("qr", (qr) => {
-      console.log('escanea el QR')
-      qrcode.generate(qr, { small: true })
-      /* console.log("Escanea el codigo QR que esta en la carepta tmp");
-      this.generateImage(qr); */
+     /*  console.log('escanea el QR')
+      qrcode.generate(qr, { small: true }) */
+      console.log("Escanea el codigo QR que esta en el /home");
+      this.generateImage(qr);
     });
 
     this.on('authenticated', (session) => {
       console.log(session)
-      console.log('acac esta la session')
+      console.log('sesion activa')
     })
 
     this.on("ready", () => {
@@ -71,7 +71,7 @@ class WsTransporter extends Client implements LeadExternal {
   }
 
   private generateImage = (base64: string) => {
-    const path = `${process.cwd()}/tmp`;
+    const path = `${process.cwd()}/src/public`;
     let qr_svg = imageQr(base64, { type: "svg", margin: 4 });
     qr_svg.pipe(require("fs").createWriteStream(`${path}/qr.svg`));
     console.log(`⚡ Recuerda que el QR se actualiza cada minuto ⚡'`);
